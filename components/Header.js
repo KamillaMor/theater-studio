@@ -1,4 +1,8 @@
+import React, { useState } from 'react';
+
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header style={{
       padding: '1rem 2rem',
@@ -33,7 +37,7 @@ export default function Header() {
       
       {/* Логотип */}
       <div style={{ 
-        fontSize: '1.8rem', 
+        fontSize: '1.5rem', 
         fontWeight: 'bold',
         color: '#FFD700',
         textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
@@ -42,21 +46,41 @@ export default function Header() {
         🎭 Студия «Без границ»
       </div>
 
+      {/* Кнопка меню для телефонов */}
+      <button 
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        style={{
+          display: 'none', // скрыто на компьютере
+          background: 'none',
+          border: 'none',
+          color: '#FFD700',
+          fontSize: '1.5rem',
+          cursor: 'pointer',
+          padding: '0.5rem'
+        }}
+        className="mobile-menu-btn"
+      >
+        ☰
+      </button>
+
       {/* Навигация */}
       <nav style={{
         display: 'flex',
-        gap: '2rem',
+        gap: '1.5rem',
         alignItems: 'center'
-      }}>
+      }}
+      className="desktop-nav"
+      >
         <a href="/" style={{ 
           color: '#FFD700', 
           textDecoration: 'none', 
           fontWeight: '600',
-          fontSize: '1.1rem',
+          fontSize: '1rem',
           padding: '0.5rem 1rem',
           borderRadius: '25px',
           transition: 'all 0.3s ease',
-          textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
+          textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+          whiteSpace: 'nowrap'
         }}
         onMouseEnter={(e) => {
           e.target.style.background = 'rgba(255,215,0,0.2)';
@@ -73,11 +97,12 @@ export default function Header() {
           color: '#FFD700', 
           textDecoration: 'none', 
           fontWeight: '600',
-          fontSize: '1.1rem',
+          fontSize: '1rem',
           padding: '0.5rem 1rem',
           borderRadius: '25px',
           transition: 'all 0.3s ease',
-          textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
+          textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+          whiteSpace: 'nowrap'
         }}
         onMouseEnter={(e) => {
           e.target.style.background = 'rgba(255,215,0,0.2)';
@@ -94,11 +119,12 @@ export default function Header() {
           color: '#FFD700', 
           textDecoration: 'none', 
           fontWeight: '600',
-          fontSize: '1.1rem',
+          fontSize: '1rem',
           padding: '0.5rem 1rem',
           borderRadius: '25px',
           transition: 'all 0.3s ease',
-          textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
+          textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+          whiteSpace: 'nowrap'
         }}
         onMouseEnter={(e) => {
           e.target.style.background = 'rgba(255,215,0,0.2)';
@@ -115,11 +141,12 @@ export default function Header() {
           color: '#FFD700', 
           textDecoration: 'none', 
           fontWeight: '600',
-          fontSize: '1.1rem',
+          fontSize: '1rem',
           padding: '0.5rem 1rem',
           borderRadius: '25px',
           transition: 'all 0.3s ease',
-          textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
+          textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+          whiteSpace: 'nowrap'
         }}
         onMouseEnter={(e) => {
           e.target.style.background = 'rgba(255,215,0,0.2)';
@@ -133,6 +160,24 @@ export default function Header() {
           Контакты
         </a>
       </nav>
+
+      {/* Стили для адаптивности */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none;
+          }
+          .mobile-menu-btn {
+            display: block !important;
+          }
+        }
+        
+        @media (min-width: 769px) {
+          .mobile-menu-btn {
+            display: none !important;
+          }
+        }
+      `}</style>
     </header>
   );
 }
